@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medical Report Explainer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🩺 Medical Report Explainer</h1>
+
+  <div class="card">
+    <h3>1. Upload your lab report (PDF)</h3>
+    <form id="upload-form">
+      <input type="file" id="report-file" accept="application/pdf" required />
+      <button type="submit" class="btn" id="upload-btn">Upload</button>
+    </form>
+    <p id="upload-status" class="small"></p>
+    <div id="parsed-values"></div>
+  </div>
+
+  <div class="card">
+    <h3>2. Ask questions about your report</h3>
+    <div id="chat"></div>
+    <form id="ask-form">
+      <input
+        type="text"
+        id="question"
+        placeholder="Example: What does low hemoglobin mean?"
+        autocomplete="off"
+        required
+      />
+      <button type="submit" class="btn" id="ask-btn">Ask</button>
+      <button type="button" class="btn btn-danger" id="stop-btn" style="display: none;">Stop</button>
+    </form>
+    <p class="small">
+      ⚠️ This tool is for educational purposes only and does not replace professional medical advice.
+    </p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
