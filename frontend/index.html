@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Medical Report Explainer</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <main class="app-shell">
+
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
+
+    <section class="hero">
+
+      <div class="hero-badge">
+        AI-powered lab report assistant
+      </div>
+
+      <div class="hero-icon">
+        🩺
+      </div>
+
+      <h1>
+        Medical Report Explainer
+      </h1>
+
+      <p class="hero-subtitle">
+        Upload your lab report and get clear,
+        simple explanations about your results.
+      </p>
+
+    </section>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <section class="workspace">
+
+      <!-- =========================
+           UPLOAD CARD
+      ========================== -->
+
+      <div class="card upload-card">
+
+        <div class="card-header">
+
+          <div class="step-badge">
+            1
+          </div>
+
+          <div>
+            <h2>
+              Upload your report
+            </h2>
+
+            <p>
+              Select a PDF lab report to begin.
+            </p>
+          </div>
+
+        </div>
+
+
+        <form id="upload-form">
+
+          <label
+            for="report-file"
+            class="upload-zone"
+            id="upload-zone"
+          >
+
+            <div class="upload-icon">
+              ↑
+            </div>
+
+            <div class="upload-content">
+
+              <strong>
+                Drop your PDF here
+              </strong>
+
+              <span>
+                or click to browse files
+              </span>
+
+              <small>
+                PDF files only
+              </small>
+
+            </div>
+
+            <input
+              type="file"
+              id="report-file"
+              accept="application/pdf"
+              required
+            />
+
+          </label>
+
+
+          <div
+            class="selected-file"
+            id="selected-file"
+            style="display: none;"
+          >
+
+            <div class="file-icon">
+              PDF
+            </div>
+
+            <div class="file-details">
+
+              <strong id="selected-file-name">
+                report.pdf
+              </strong>
+
+              <span id="selected-file-size">
+                0 KB
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="btn btn-primary btn-full"
+            id="upload-btn"
+          >
+            <span class="btn-text">
+              Analyze Report
+            </span>
+
+            <span
+              class="btn-loader"
+              id="upload-loader"
+              style="display: none;"
+            ></span>
+          </button>
+
+        </form>
+
+
+        <div
+          id="upload-status"
+          class="status-message"
+          aria-live="polite"
+        ></div>
+
+
+        <div
+          id="parsed-values"
+          class="parsed-values"
+        ></div>
+
+      </div>
+
+
+      <!-- =========================
+           CHAT CARD
+      ========================== -->
+
+      <div class="card chat-card">
+
+        <div class="card-header">
+
+          <div class="step-badge">
+            2
+          </div>
+
+          <div>
+
+            <h2>
+              Ask about your results
+            </h2>
+
+            <p>
+              Ask questions in simple language.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- Suggested Questions -->
+
+        <div class="suggested-section">
+
+          <p class="suggested-title">
+            Try asking
+          </p>
+
+          <div class="suggestion-list">
+
+            <button
+              type="button"
+              class="suggestion-chip"
+              data-question="Can you summarize my report?"
+            >
+              Summarize my report
+            </button>
+
+            <button
+              type="button"
+              class="suggestion-chip"
+              data-question="Which values are outside the normal range?"
+            >
+              Explain unusual values
+            </button>
+
+            <button
+              type="button"
+              class="suggestion-chip"
+              data-question="What does hemoglobin mean?"
+            >
+              Explain hemoglobin
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- Chat -->
+
+        <div
+          id="chat"
+          class="chat-window"
+          aria-live="polite"
+        >
+
+          <div class="welcome-message">
+
+            <div class="bot-avatar">
+              AI
+            </div>
+
+            <div class="welcome-bubble">
+
+              <strong>
+                Hello 👋
+              </strong>
+
+              <p>
+                Upload your medical report,
+                then ask me anything about the values in it.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Chat Input -->
+
+        <form
+          id="ask-form"
+          class="chat-form"
+        >
+
+          <div class="input-wrapper">
+
+            <input
+              type="text"
+              id="question"
+              placeholder="Ask something about your report..."
+              autocomplete="off"
+              required
+            />
+
+            <button
+              type="submit"
+              class="send-btn"
+              id="ask-btn"
+              aria-label="Send question"
+            >
+              ➜
+            </button>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="btn btn-danger stop-btn"
+            id="stop-btn"
+            style="display: none;"
+          >
+            Stop generating
+          </button>
+
+        </form>
+
+
+        <!-- Medical Disclaimer -->
+
+        <div class="disclaimer">
+
+          <span class="disclaimer-icon">
+            ⚠️
+          </span>
+
+          <p>
+            This tool provides educational information only
+            and does not replace professional medical advice,
+            diagnosis, or treatment.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+      <p>
+        Your medical reports are processed only
+        to generate explanations.
+      </p>
+
+    </footer>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
